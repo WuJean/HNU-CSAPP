@@ -74,6 +74,75 @@ void ExecuteSub(char source[],char dest[],int *result)
 	
 	
 }
+void ExecuteMul(char source[],char dest[],int *result)
+{
+	char op;
+	if(0==strcmp(source,"R0"))
+		op=R0;
+	else if(0==strcmp(source,"R1"))
+		op=R1;
+	else if(0==strcmp(source,"R2"))
+		op=R2;
+	else if(0==strcmp(source,"R3"))
+		op=R3;
+	else
+		*result=-1;
+	if(0==strcmp(dest,"R0\n"))
+		R0*=op;
+	else if(0==strcmp(dest,"R1\n"))
+		R1*=op;
+	else if(0==strcmp(dest,"R2\n"))
+		R2*=op;
+	else if(0==strcmp(dest,"R3\n"))
+		R3*=op;
+	else
+		*result=-1;
+
+}
+void ExecuteDiv(char source[],char dest[],int *result)
+{
+	char op;
+	if(0==strcmp(source,"R0"))
+		op=R0;
+	else if(0==strcmp(source,"R1"))
+		op=R1;
+	else if(0==strcmp(source,"R2"))
+		op=R2;
+	else if(0==strcmp(source,"R3"))
+		op=R3;
+	else
+		*result=-1;
+	if(0==strcmp(dest,"R0\n"))
+	{
+		int temp = (int) R0;
+		R0/=op;
+		if(temp != (int)R0*op)
+			*result=-1;
+	}
+	else if(0==strcmp(dest,"R1\n"))
+	{
+		int temp = (int) R1;
+		R1/=op;
+		if(temp != (int)R1*op)
+			*result=-1;
+	}	
+	else if(0==strcmp(dest,"R2\n"))
+	{
+		int temp = (int) R2;
+		R2/=op;
+		if(temp != (int)R2*op)
+			*result=-1;
+	}	
+	else if(0==strcmp(dest,"R3\n"))
+	{
+		int temp = (int) R3;
+		R3/=op;
+		if(temp != (int)R3*op)
+			*result=-1;
+	}
+	else
+		*result=-1;
+}
 void ExecuteMov(char source[],char dest[],int *result)
 {
 	char op;
@@ -162,21 +231,23 @@ void ExecuteInstruction(int * result)
 	int op1,op2,op3;
 	int i;
 	strncpy(instruction_buffer,memory+(PC-1)*20,20);
+	char op[3];
+	strncpy(op,instruction_buffer,2);
 //	printf("%s\n",instruction_buffer);
-	switch(instruction_buffer[0])
+	switch(atoi(op))
 	{
-		case '0':
+		case 0:
 			*result=0;
 			PC++;
 			break;		//停机
-		case '1':
+		case 1:
 			scanf("%d",&i);
 			R0=(unsigned char)i;
 			safe_flush(stdin);
 			*result=1;
 			PC++;
 			break;
-		case '2':		//加法
+		case 2:		//加法
 			split(instruction_buffer," ",revbuf,&num);
 			if(3>num)
 				*result=-1;	//出错
@@ -185,7 +256,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=2;
 			PC++;
 			break;
-		case '3':		//减法
+		case 3:		//减法
 			split(instruction_buffer," ",revbuf,&num);
 			if(3>num)
 				*result=-1;	//出错
@@ -194,7 +265,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=3;			
 			PC++;
 			break;	
-		case '4':		//赋值
+		case 4:		//赋值
 			split(instruction_buffer," ",revbuf,&num);
 			if(3>num)
 				*result=-1;	//出错
@@ -203,7 +274,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=4;			
 			PC++;
 			break;
-		case '5':		//拷贝
+		case 5:		//拷贝
 			split(instruction_buffer," ",revbuf,&num);
 //			printf("%d\n",num);
 			if(3>num)
@@ -213,7 +284,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=5;			
 			PC++;
 			break;
-		case '6':		//判断跳转
+		case 6:		//判断跳转
 			split(instruction_buffer," ",revbuf,&num);
 			if(2!=num)
 				*result=-1;	//出错
@@ -226,7 +297,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=6;			
 //			PC++;
 			break;
-		case '7':		//直接跳转
+		case 7:		//直接跳转
 			split(instruction_buffer," ",revbuf,&num);
 			if(2>num)
 				*result=-1;	//出错
@@ -238,7 +309,7 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=6;			
 //			PC++;
 			break;
-		case '8':
+		case 8:
 			split(instruction_buffer," ",revbuf,&num);
 			if(2>num)
 				*result=-1;	//出错	
@@ -247,7 +318,25 @@ void ExecuteInstruction(int * result)
 			if(*result!=-1) *result=8;
 //			safe_flush(stdin);
 			PC++;	
-			break;		
+			break;
+		case 9:
+			split(instruction_buffer," ",revbuf,&num);
+			if(3>num)
+				*result=-1;
+			else
+				ExecuteMul(revbuf[1],revbuf[2],result);
+			if(*result!=-1) *result=9;
+			PC++;
+			break;
+		case 10:
+			split(instruction_buffer," ",revbuf,&num);
+			if(3>num)
+				*result=-1;
+			else
+				ExecuteDiv(revbuf[1],revbuf[2],result);
+			if(*result!=-1) *result=10;
+			PC++;
+			break;
 		default:
 			*result=-1;	//出错
 			break;
