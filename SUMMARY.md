@@ -5,4 +5,4 @@
   * [第一次小班](page-3/di-yi-ci-xiao-ban.md)
   * [第一次小班ppt](page-3/di-yi-ci-xiao-ban-ppt.md)
 * [Page 1](page-1/README.md)
-  * [Page 2](page-1/page-2.md)
+  * [实验一](page-1/shi-yan-yi.md)
