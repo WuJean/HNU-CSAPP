@@ -98,6 +98,7 @@ ptr     pointer缩写 即指针
 **3.3.2 例子**
 
 ```c
+//比较乱，待整理
 int arr[5] = {1, 2, 3, 4, 5};
 int x = arr[10]; // 超出数组下标范围
 
@@ -116,6 +117,27 @@ int y = x; // 未初始化的变量 x 读取其值是未定义行为
 
 int i = INT_MAX;
 i = i + 1; // 发生有符号整数溢出
+
+//在表达式中多次修改同一变量而没有使用序列点。
+int x = 5;
+int y = ++x + ++x;  // 未使用序列点
+
+//在函数参数列表中多次对同一参数求值。
+int square(int x) {
+    return x * x;
+}
+
+int func(int a, int b, int c) {
+    int result = square(a++) + square(++b) + square(c);
+    return result;
+}
+
+int main() {
+    int x = 2;
+    int y = func(x, x, x);
+    return 0;
+}
+
 ```
 
 ### 3.4 拓展阅读相关
