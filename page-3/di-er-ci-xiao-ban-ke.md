@@ -36,7 +36,9 @@
       * 7\. 解引用空指针或者解引用一个超出数组边界或者解引用一个未初始化指针等指针相关操作都属于未定义行为[\[3\]](https://www.nowcoder.com/questionTerminal/8e273aeb2b4147fea72ff08814fc78e6)[\[5\]](https://juejin.cn/post/7031078151841120264)。需要注意的是，在不同编译器上或者不同操作系统或者不同架构CPU上会产生不同结果。因此，在编写 C 代码时应该尽量避免使用未定义行为，并且要注意不同编译器之间可能存在差异。
         * 5 SOURCESView List1![hiczp.com favicon](https://www.google.com/s2/favicons?domain=hiczp.com)hiczp2![c-cpp.com favicon](https://www.google.com/s2/favicons?domain=c-cpp.com)c-cpp3![nowcoder.com favicon](https://www.google.com/s2/favicons?domain=nowcoder.com)nowcoder4![csdn.net favicon](https://www.google.com/s2/favicons?domain=csdn.net)csdn5![juejin.cn favicon](https://www.google.com/s2/favicons?domain=juejin.cn)juejin
 * 分别说明未定义操作在不同编译器下有什么结果
+  * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
 * 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
+  *
 
 
 
