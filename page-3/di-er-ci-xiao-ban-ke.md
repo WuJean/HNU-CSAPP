@@ -16,14 +16,17 @@
 ### ppt的大纲：
 
 * 分点说明代码里的未定义操作有哪些
-  *
+  * 展示题目代码
+  * 指出那两个未定义操3.1.1
 * 还有哪些类似的“未定义的操作”，举例说明。
-  *
-* 分别说明未定义操作在不同编译器下有什么结果
-  * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
-  * 可以使用在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果
-* 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
-  * 我们要选哪几个编译器？讲多少个汇编代码？
+  * 举例说明3.3.1，3.3.2
+* 未定义操作的成因3.1.2
+  * 分别说明未定义操作在不同编译器下有什么结果3.2
+    * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
+    * 可以使用在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果
+  * 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
+    * 我们要选哪几个编译器？讲多少个汇编代码？
+* 如何解决未定义操作3.1.3
 
 
 
