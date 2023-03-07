@@ -16,21 +16,40 @@
 ### ppt的大纲：
 
 * 分点说明代码里的未定义操作有哪些
-  * 展示题目代码
-  * 指出那两个未定义操3.1.1
+  *
 * 还有哪些类似的“未定义的操作”，举例说明。
-  * 举例说明3.3.1，3.3.2
-* 未定义操作的成因3.1.2
-  * 分别说明未定义操作在不同编译器下有什么结果3.2
-    * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
-    * 可以使用在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果
-  * 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
-    * 我们要选哪几个编译器？讲多少个汇编代码？
-* 如何解决未定义操作3.1.3
+  *
+* 分别说明未定义操作在不同编译器下有什么结果
+  * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
+  * 可以使用在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果
+* 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
+  * 我们要选哪几个编译器？讲多少个汇编代码？
+* 分点说明代码里的未定义操作有哪些
+* 还有哪些类似的“未定义的操作”，举例说明。
+* 分别说明未定义操作在不同编译器下有什么结果
+  * 这个要不要写出代码，然后用不同编译器编译一下获得结果，截图进来？
+  * 可以使用在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果
+* 从汇编代码来讨论其结果不同的原因。（可在![](file:///C:/Users/qq/AppData/Roaming/Tencent/QQ/Temp/%W@GJ$ACOF\(TYDYECOKVDYB.png)https://godbolt.org/上获取不同编译器的结果）（这个可以现场编译一下，展示汇编代码的区别？）
+  * 我们要选哪几个编译器？讲多少个汇编代码？
 
 
 
 ## 二、剧本制作
+
+* 一个人担任编译器来讲解正常的编译操作，栈帧结构、寄存器、一段比较简单的汇编代码（两个or三个寄存器执行指令）
+* 阿巴阿巴上场，给出小班题的示例代码，在黑板上写出自己预期的执行结果。
+* 编译器开始编译代码，交给寄存器来工作，寄存器吵架，编译出错
+* 寄存器质问编译器为什么会允许未定义的操作，编译器来讲解未定义操作对c语言的作用
+* 旁白来讲述其他可能的未定义操作
+* 最后大家一起 包饺子okok 大家一起放弃c++
+
+### 开幕
+
+c语言编译器正在展示他强大的功能，他向大家展示了他是如何编译一段简单的汇编代码（）
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+
 
 ## 三、材料收集（将收集好的材料按照二级标题分类存档）
 
@@ -68,11 +87,102 @@ ptr     pointer缩写 即指针
 
 #### 3.2.2 寄存器和栈帧
 
-[https://blog.csdn.net/ccboby/article/details/6042380](https://blog.csdn.net/ccboby/article/details/6042380) X86-64寄存器和栈帧
+X86-64寄存器和栈帧
 
+[https://blog.csdn.net/ccboby/article/details/6042380](https://blog.csdn.net/ccboby/article/details/6042380)&#x20;
 
+[https://zhuanlan.zhihu.com/p/440016053](https://zhuanlan.zhihu.com/p/440016053)
 
+#### 3.2.3 一段简单的汇编代码
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+这段代码是一个简单的C语言程序，使用`printf`函数打印出两个整数变量`i`和`j`的值。下面是这段代码的分析：
+
+`.LC0: .string "i = %d,j = %d"`
+
+`.LC0`是一个标号，表示这个字符串常量的位置，`.string`是一个汇编指令，用于在代码段中声明一个字符串常量。
+
+`main:`
+
+`main`是程序的主函数，程序的执行从这里开始。
+
+```perl
+push rbp
+mov rbp, rsp
+sub rsp, 16
+```
+
+这段汇编代码是用来设置函数栈帧的，将栈指针`rsp`向下移动16个字节，以在栈上为函数的局部变量和临时变量预留空间。同时，将旧的栈底指针`rbp`压入栈中，并将当前的栈指针`rsp`赋值给`rbp`，以便在函数退出时恢复栈指针。
+
+```css
+mov DWORD PTR [rbp-4], 0
+mov eax, DWORD PTR [rbp-4]
+add eax, 1
+mov DWORD PTR [rbp-8], eax
+```
+
+这段汇编代码用来初始化变量`i`和`j`的值。在这里，`i`的初始值被设置为0，然后被加载到`eax`寄存器中，递增1后存储到变量`j`中（`[rbp-8]`表示从栈底指针`rbp`向下偏移8个字节的内存位置，即变量`j`的存储位置）。
+
+```css
+mov edx, DWORD PTR [rbp-8]
+mov eax, DWORD PTR [rbp-4]
+mov esi, eax
+mov edi, OFFSET FLAT:.LC0
+mov eax, 0
+call printf
+```
+
+这段汇编代码调用了`printf`函数，用于输出变量`i`和`j`的值。在这里，将变量`i`和`j`的值加载到`eax`和`edx`寄存器中，并通过寄存器`esi`和`edi`将它们传递给`printf`函数。同时，将字符串常量`.LC0`的地址传递给`printf`函数，以指示要打印的格式字符串。最后，调用`printf`函数来打印格式化字符串。
+
+```
+mov eax, 0
+leave
+ret
+```
+
+这段汇编代码将0值加载到`eax`寄存器中，然后使用`leave`指令撤销函数栈帧，回收栈空间，并将旧的栈底指针`rbp`的值恢复到栈指针`rsp`中。最后，使用`ret`指令返回到调用者。
+
+#### 一些值得注意的点
+
+我们在call printf 调用该函数的时候，可能会好奇函数的参数是如何传递进该函数的；
+
+众所周知%eax是累加器，用来存储加法的结果，故不能用于函数传值且在使用完后要进行清零操作
+
+```
+mov esi, eax
+mov edi, OFFSET FLAT:.LC0
+mov eax, 0
+call printf
+```
+
+故在该步骤中先将eax的值传递给esi，再将eax清零
+
+那么printf函数是如何执行的呢？
+
+printf函数接受一系列的参数，其中第一个参数为一个字符串，根据编译器的规定
+
+x86-64中，最多允许 6 个参数通过通用寄存器来传递，多出的参数需要通过栈来传递；传递参数时，参数的顺序与寄存器的关系对应如下：
+
+| 操作数大小（位） | 参数1  | 参数2  | 参数3  | 参数4  | 参数5  | 参数6  |
+| -------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 64       | %rdi | %rsi | %rdx | %rcx | %r8  | %r9  |
+| 32       | %edi | %esi | %edx | %ecx | %r8d | %r9d |
+| 16       | %di  | %si  | %dx  | %cx  | %r8w | %r9w |
+| 8        | %dil | %sil | %dl  | %cl  | %r8b | %r9b |
+
+当参数大于 6 个时，把超出的参数放到栈上，而参数 7 位于栈顶。
+
+我们可以看到在调用printf函数前编译器给各个寄存器分别赋了值，这个赋值是按照一定的顺序的：
+
+```
+mov edx, DWORD PTR [rbp-8]
+mov eax, DWORD PTR [rbp-4]
+mov esi, eax
+mov edi, OFFSET FLAT:.LC0
+mov eax, 0
+call printf
+```
 
 ### 3.3 未定义操作相关
 
@@ -82,7 +192,6 @@ ptr     pointer缩写 即指针
 * 对空指针进行解引用。
 * 在函数中使用未初始化的变量。
 * 在表达式中多次修改同一变量而没有使用序列点。
-  * 解释：在C语言中，对于一个表达式，其中的操作数是按照一定的顺序进行求值的，这个顺序被称为“求值顺序”或“求值顺序规则”。在表达式中，如果一个变量被多次修改而没有使用适当的序列点来明确它们的求值顺序，则会导致未定义行为。
 * 在函数参数列表中多次对同一参数求值。
 * 有符号整数溢出：当有符号整数类型发生溢出时，结果是未定义的[\[2\]](https://c-cpp.com/c/language/behavior)。
 
@@ -143,7 +252,6 @@ int main() {
     int y = func(x, x, x);
     return 0;
 }
-
 ```
 
 ### 3.4 拓展阅读相关
