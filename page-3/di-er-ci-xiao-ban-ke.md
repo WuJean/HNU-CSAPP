@@ -270,4 +270,8 @@ int main() {
 }
 ```
 
-### 3.4 拓展阅读相关
+### 3.4 拓展阅读相关（链接直接甩到这里面！做好标记就行！）
+
+[https://juejin.cn/post/7198135791234465847](https://juejin.cn/post/7198135791234465847)  x86-64架构中函数调用的习惯
+
+[https://zhuanlan.zhihu.com/p/51473871](https://zhuanlan.zhihu.com/p/51473871)  你可能不知道的printf
