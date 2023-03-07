@@ -84,12 +84,11 @@ ptr     pointer缩写 即指针
 (perplexity.ai)在C语言中，有许多未定义的操作。以下是一些常见的未定义行为：
 
 * 1\. 数组越界：当程序试图访问数组元素时，如果下标超出了数组的范围，则会发生未定义行为[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)[\[2\]](https://c-cpp.com/c/language/behavior)[\[3\]](https://www.nowcoder.com/questionTerminal/8e273aeb2b4147fea72ff08814fc78e6)。
-* 2\. 修改一个变量两次而没有使用中间值：例如 `i = i++` 这样的代码是未定义的[\[4\]](https://blog.csdn.net/houzijushi/article/details/102754339)。
-* 3\. 在表达式中修改变量并且没有指定顺序：例如 \`j=j++\` 这样的代码也是未定义的[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)[\[2\]](https://c-cpp.com/c/language/behavior)。
-* 4\. 使用空指针或释放已经释放过的指针：这些都是未定义行为，可能导致程序崩溃或者产生其他错误[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)[\[3\]](https://www.nowcoder.com/questionTerminal/8e273aeb2b4147fea72ff08814fc78e6)。
-* 5\. 对于没有初始化的变量进行读取操作：这个行为也是未定义的，因为它依赖于编译器和运行时环境[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)。
-* 6\. 有符号整数溢出：当有符号整数类型发生溢出时，结果是未定义的[\[2\]](https://c-cpp.com/c/language/behavior)。
-* 7\. 解引用空指针或者解引用一个超出数组边界或者解引用一个未初始化指针等指针相关操作都属于未定义行为[\[3\]](https://www.nowcoder.com/questionTerminal/8e273aeb2b4147fea72ff08814fc78e6)[\[5\]](https://juejin.cn/post/7031078151841120264)。需要注意的是，在不同编译器上或者不同操作系统或者不同架构CPU上会产生不同结果。因此，在编写 C 代码时应该尽量避免使用未定义行为，并且要注意不同编译器之间可能存在差异。
+* 2\. 在表达式中修改变量并且没有指定顺序：例如 \`j=j++\` 这样的代码也是未定义的[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)[\[2\]](https://c-cpp.com/c/language/behavior)。
+* 3\. 使用空指针或释放已经释放过的指针：这些都是未定义行为，可能导致程序崩溃或者产生其他错误[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)[\[3\]](https://www.nowcoder.com/questionTerminal/8e273aeb2b4147fea72ff08814fc78e6)。
+* 4\. 对于没有初始化的变量进行读取操作：这个行为也是未定义的，因为它依赖于编译器和运行时环境[\[1\]](https://www.hiczp.com/c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.html)。
+* 5\. 有符号整数溢出：当有符号整数类型发生溢出时，结果是未定义的[\[2\]](https://c-cpp.com/c/language/behavior)。
+* 需要注意的是，在不同编译器上或者不同操作系统或者不同架构CPU上会产生不同结果。因此，在编写 C 代码时应该尽量避免使用未定义行为，并且要注意不同编译器之间可能存在差异。
   * 5 SOURCESView List1![hiczp.com favicon](https://www.google.com/s2/favicons?domain=hiczp.com)hiczp2![c-cpp.com favicon](https://www.google.com/s2/favicons?domain=c-cpp.com)c-cpp3![nowcoder.com favicon](https://www.google.com/s2/favicons?domain=nowcoder.com)nowcoder4![csdn.net favicon](https://www.google.com/s2/favicons?domain=csdn.net)csdn5![juejin.cn favicon](https://www.google.com/s2/favicons?domain=juejin.cn)juejin
 
 <!---->
