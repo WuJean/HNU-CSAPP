@@ -44,9 +44,29 @@
 
 ### 开幕
 
-c语言编译器正在展示他强大的功能，他向大家展示了他是如何编译一段简单的汇编代码（）
+c语言编译器正在展示他强大的功能，他向大家展示了他是如何编译一段简单的汇编代码（3.2.3一些简单的汇编代码）解释清楚简单汇编代码的原理，并表现得很嚣张
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+### 第二幕 阿巴阿巴程序员上场
+
+此时一位没上过计算机系统小班课的计算机专业学生登场，交给了编译器一段代码，编译器：”简简单单手拿把掐“，开始编译这段代码：
+
+```
+#include<stdio.h>
+int main()
+{
+int i=0;
+int a[] = {10,20,30};
+int r = 1 * a[i++] + 2 * a[i++] + 3 * a[i++];
+int j=4;
+j=j++;
+printf("r=%d,j=%d",i,j);
+return 0;
+}
+```
+
+编译器精神开始分裂，变成三个编译器分别开始工作
 
 
 
@@ -224,6 +244,8 @@ mov eax, 0
 call printf
 ```
 
+printf(参数1,参数2,参数3) 按照编译器的约定，参数1存储在edi中，为一个string类型的变量；参数2应存储在esi中，故执行mov esi，eax操作；对于参数3的处理，编译器很聪明的提前将参数3的值赋给了edx；printf从后往前压参数入栈，再从前往后出栈，故给出了正确的输出。
+
 ### 3.3 未定义操作相关
 
 **3.3.1 一些常见的未定义行为包括：**
@@ -299,3 +321,5 @@ int main() {
 [https://juejin.cn/post/7198135791234465847](https://juejin.cn/post/7198135791234465847)  x86-64架构中函数调用的习惯
 
 [https://zhuanlan.zhihu.com/p/51473871](https://zhuanlan.zhihu.com/p/51473871)  你可能不知道的printf
+
+[https://blog.csdn.net/u013982161/article/details/51347944](https://blog.csdn.net/u013982161/article/details/51347944) 强烈推荐 寄存器和栈帧
